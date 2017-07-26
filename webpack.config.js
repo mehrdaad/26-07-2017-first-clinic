@@ -32,6 +32,11 @@ const commonConfig = merge([
 const productionConfig = merge([
   parts.extractCSS({ use: 'css-loader' }),
   {
+    performance: {
+      hints: 'warning', // 'error' or false are valid too
+      maxEntrypointSize: 100000, // in bytes
+      maxAssetSize: 100000, // in bytes
+    },
     plugins: [
       new webpack.optimize.CommonsChunkPlugin({
         name: 'vendor',
@@ -39,6 +44,11 @@ const productionConfig = merge([
       }),
     ],
   },
+  parts.minifyJavaScript(),
+  parts.setFreeVariable(
+    'process.env.NODE_ENV',
+    'production'
+  ),
 ]);
 
 function isVendor({ resource }) {
