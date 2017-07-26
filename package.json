@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint:js": "eslint app/ webpack.*.js",
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production"
   },
@@ -11,6 +12,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-loader": "^1.9.0",
     "html-webpack-plugin": "^2.29.0",
     "webpack": "^3.4.0",
     "webpack-dev-server": "^2.6.1"
